@@ -11,10 +11,11 @@ var exp = {
             index: '/'
         }
     },
+    devtool: 'source-map',
     entry: {
         webpack: 'webpack-dev-server/client?http://0.0.0.0:81',
         webpackHot: 'webpack/hot/only-dev-server',
-        bundle: './index.js'
+        bundle: './index.jsx'
     },
     output: {
         path: path.join(__dirname, 'assets'),
@@ -26,15 +27,17 @@ var exp = {
     },
     module: {
         preLoaders: [
-            { test: /\.js?$/, exclude: /node_modules/, loader: 'eslint-loader' }
+            { test: /\.jsx?$/, exclude: /node_modules/, loader: 'eslint-loader' },
+            { test: /\.js$/, exclude: /node_modules/, loader: "source-map-loader" }
         ],
         loaders: [
+            { test: /\.tsx?$/, loader: "ts-loader" },
             {
-                test: /\.js?$/,
+                test: /\.jsx?$/,
                 exclude: /node_modules/,
                 loader: 'babel-loader',
                 query: {
-                    presets: ['es2015']
+                    presets: ['es2015', 'react']
                 }
             },
             { test: /\.png$/, loader: 'url-loader?limit=10000&minetype=image/png' },
@@ -59,7 +62,7 @@ var exp = {
     ],
     externals: {},
     resolve: {
-        extensions: ['', '.js']
+        extensions: ['', '.js', '.webpack.js', '.web.js', '.ts', '.tsx']
     }
 };
 
