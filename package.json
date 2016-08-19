@@ -58,5 +58,8 @@
     "webpack-dev-server": "^1.14.1",
     "worker-loader": "^0.7.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "react-redux": "^4.4.5",
+    "redux": "^3.5.2"
+  }
 }

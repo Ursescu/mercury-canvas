@@ -27,11 +27,14 @@ var exp = {
     },
     module: {
         preLoaders: [
-            { test: /\.jsx?$/, exclude: /node_modules/, loader: 'eslint-loader' },
-            { test: /\.js$/, exclude: /node_modules/, loader: "source-map-loader" }
+            {
+                test: /\.jsx?$/,
+                exclude: /node_modules/,
+                loaders: ['source-map-loader', 'eslint-loader']
+            }
         ],
         loaders: [
-            { test: /\.tsx?$/, loader: "ts-loader" },
+            { test: /\.tsx?$/, loader: 'ts-loader' },
             {
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
